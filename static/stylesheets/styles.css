@@ -1,3 +1,7 @@
+body {
+  padding-top: 70px;
+}
+
 .no-posts-here {
   text-align: center;
 }
@@ -7,15 +11,24 @@
 .post .post__meta {
   font-weight: bold;
   text-align: right;
-  padding-bottom: 19px;
 }
 
 .post .post__meta a:hover {
   text-decoration: none;
 }
 
+.post .post__content {
+  padding-bottom: 19px;
+}
+
 .btn-add-new-post {
   position: fixed;
+  color: white;
+  border-radius: 50%;
   bottom: 20px;
   right: 20px;
+}
+
+.btn-add-new-post:hover {
+  color: red;
 }

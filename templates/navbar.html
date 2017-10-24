@@ -1,4 +1,39 @@
-<nav class="navbar navbar-default" role="navigation" ng-controller="NavbarController as vm">
+<nav class="navbar fixed-top navbar-expand-md navbar-dark primary-color-dark" ng-controller="NavbarController as vm">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <a class="navbar-brand" ui-sref="home"><strong>Not Google Plus</strong></a>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" ui-sref-active="active">
+                    <a class="nav-link" ui-sref="home">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item" ui-sref-active="active">
+                    <a class="nav-link" ui-sref="profile({username: '{{user.username}}'})">+{{ user.username }}</a>
+                </li>
+                <li class="nav-item" ui-sref-active="active">
+                    <a class="nav-link" ui-sref="userSettings({username: '{{ user.username }}'})">Settings</a>
+                </li>
+                <li class="nav-item" ui-sref-active="active">
+                    <a class="nav-link" href="" ng-click="vm.logout()">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item" ui-sref-active="active">
+                  <a class="nav-link" ui-sref="login">Login</a>
+                </li>
+                <li class="nav-item" ui-sref-active="active">
+                  <a class="nav-link" ui-sref="register">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+<!--
+<nav class="navbar navbar-dark navbar-expand-lg primary-color-light" role="navigation" ng-controller="NavbarController as vm">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#not-google-plus-nav">
@@ -8,19 +43,19 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">Not Google Plus</a>
-    </div> <!-- ./navbar-header -->
+    </div>
 
     <div class="collapse navbar-collapse" id="not-google-plus-nav">
       <ul class="nav navbar-nav pull-right">
         {% if user.is_authenticated %}
-          <li><a ui-sref="profile({username: '{{user.username}}'})">+{{ user.username }}</a></li>
-          <li><a ui-sref="userSettings({username: '{{ user.username }}'})">Settings</a></li>
-          <li><a href="javascript:void(0)" ng-click="vm.logout()">Logout</a></li>
+        <li><a ui-sref="profile({username: '{{user.username}}'})">+{{ user.username }}</a></li>
+        <li><a ui-sref="userSettings({username: '{{ user.username }}'})">Settings</a></li>
+        <li><a href="" ng-click="vm.logout()">Logout</a></li>
         {% else %}
-          <li><a href="/login">Login</a></li>
-          <li><a href="/register">Register</a></li>
+        <li><a ui-sref="login">Login</a></li>
+        <li><a ui-sref="register">Register</a></li>
         {% endif %}
       </ul>
-    </div> <!-- /.collapse.navbar-collapse -->
-  </div> <!-- /.container-fluid -->
-</nav>
+    </div>
+  </div>
+</nav> -->
